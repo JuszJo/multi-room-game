@@ -1,7 +1,7 @@
 //define a player class
 class Player extends Sprite {
     constructor(x, y, width, height, {collisionBlocks, frameAmountX, frameAmountY}) {
-        super({imageSrc: "../images/Punk_idle.png", frameAmountX, frameAmountY})
+        super({imageSrc: "../images/player/Punk_idle.png", frameAmountX, frameAmountY})
         this.position = {
             x: x,
             y: y
