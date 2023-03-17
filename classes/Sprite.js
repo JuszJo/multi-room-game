@@ -1,6 +1,6 @@
 //define sprite class 
 class Sprite {
-    constructor({position, imageSrc, frameAmountX = 1, frameAmountY = 1}) {
+    constructor({position, imageSrc, frameAmountX = 1, frameAmountY = 1, animations}) {
         this.position = position;
         this.image = new Image();
         this.loaded = false;
@@ -15,6 +15,16 @@ class Sprite {
         this.currentFrame = 0;
         this.elapsedFrames = 0;
         this.frameBuffer = 6;
+        this.animations = animations
+
+        if(this.animations) {
+            for (let key in this.animations) {
+                const image = new Image();
+                image.src = this.animations[key].imageSrc;
+                this.animations[key].image = image;
+            }
+        }
+
     }
 
     updateFrames() {

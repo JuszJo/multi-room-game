@@ -23,3 +23,11 @@ function createObjectsFrom2D(array) {
     })
     return objects;
 }
+
+function turnOffBoxes() {
+    player.turnOffBoxes();
+}
+
+function turnOnBoxes() {
+    player.turnOnBoxes();
+}

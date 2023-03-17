@@ -1,35 +1,44 @@
 //define a player class
 class Player extends Sprite {
-    constructor(x, y, width, height, {collisionBlocks, frameAmountX, frameAmountY}) {
-        super({imageSrc: "../images/player/Punk_idle.png", frameAmountX, frameAmountY})
+    constructor(x, y, width, height, {collisionBlocks, frameAmountX, frameAmountY, animations}) {
+        super({imageSrc: "../images/player/Punk_idle.png", frameAmountX, frameAmountY, animations})
         this.position = {
             x: x,
             y: y
         }
-
         this.velocity = {
             x: 0,
             y: 0
         }
-
         //future reference
         // this.width = width;
         // this.height = height;
-
         this.gravity = 1;
-
         this.collisionBlocks = collisionBlocks;
+        this.boxes = true;
+    }
+
+    turnOffBoxes() {
+        this.boxes = false;
+    }
+
+    turnOnBoxes() {
+        this.boxes = true;
     }
 
     drawBoundingbox() {
-        //draw bounding box
-        drawingSurface.fillStyle = "rgb(0, 0, 255, 0.5)";
-        drawingSurface.fillRect(this.position.x, this.position.y, this.width, this.height);
+        if(this.boxes) {
+            //draw bounding box
+            drawingSurface.fillStyle = "rgb(0, 0, 255, 0.5)";
+            drawingSurface.fillRect(this.position.x, this.position.y, this.width, this.height);
+        }
     }
 
     drawHitbox() {
-        drawingSurface.fillStyle = "rgb(255, 0, 0, 0.5)";
-        drawingSurface.fillRect(this.hitbox.position.x, this.hitbox.position.y, this.hitbox.width, this.hitbox.height)
+        if(this.boxes) {
+            drawingSurface.fillStyle = "rgb(255, 0, 0, 0.5)";
+            drawingSurface.fillRect(this.hitbox.position.x, this.hitbox.position.y, this.hitbox.width, this.hitbox.height)
+        }
     }
 
     updateHitbox() {
@@ -49,8 +58,10 @@ class Player extends Sprite {
     }
 
     showCollisionArea(block) {
-        drawingSurface.fillStyle = "blue";
-        drawingSurface.fillRect(block.position.x, block.position.y, block.width, block.height)
+        if(this.boxes) {
+            drawingSurface.fillStyle = "blue";
+            drawingSurface.fillRect(block.position.x, block.position.y, block.width, block.height)
+        }
     }
     
     checkCollisionsX() {
@@ -107,6 +118,14 @@ class Player extends Sprite {
                 }
             }
         }
+    }
+
+    switchSprite(name) {
+        if(this.image == this.animations[name].image) return
+        this.currentFrame = 0;
+        this.image = this.animations[name].image;
+        this.frameAmountX = this.animations[name].frameAmountX;
+        this.frameBuffer = this.animations[name].frameBuffer;
     }
 
     //draw rectangle function

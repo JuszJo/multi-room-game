@@ -18,7 +18,22 @@ const backgroundImage = new Sprite({
 //create a new instance of the player class
 const player = new Player(100, 250, 20, 20, {collisionBlocks,
     frameAmountX: 4,
-    frameAmountY: 1
+    frameAmountY: 1,
+    animations: {
+        idle: {
+            frameAmountX: 4,
+            frameAmountY: 1,
+            loop: true,
+            imageSrc: "./images/player/Punk_idle.png"
+        },
+        runRight: {
+            frameAmountX: 6,
+            frameAmountY: 1,
+            frameBuffer: 6,
+            loop: true,
+            imageSrc: "./images/player/Punk_run.png"
+        }
+    }
 })
 
 const keys = {
@@ -52,8 +67,17 @@ function animate() {
     player.velocity.x = 0;
 
     //check keys pressed
-    if(keys.a.pressed) player.velocity.x = -5;
-    else if(keys.d.pressed) player.velocity.x = 5;
+    if(keys.a.pressed) {
+        player.switchSprite("runRight");
+        player.velocity.x = -5;
+    }
+    else if(keys.d.pressed) {
+        player.switchSprite("runRight");
+        player.velocity.x = 5
+    }
+    else {
+        player.switchSprite("idle")
+    }
 
     //call draw and update function
     player.draw()
