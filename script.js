@@ -4,7 +4,10 @@ const canvasHeight = 576;
 
 //define drawing surface
 const drawingSurface = canvas.getContext('2d')
-drawingSurface.fillStyle = "red";
+
+//make a 2D array of collision blocks
+const parsedCollisions = parse2D(collisions);
+const collisionBlocks = createObjectsFrom2D(parsedCollisions)
 
 //create a new instance of sprite class
 const backgroundImage = new Sprite({
@@ -13,7 +16,7 @@ const backgroundImage = new Sprite({
 });
 
 //create a new instance of the player class
-const square = new Player(100, 100, 100, 100)
+const square = new Player(100, 250, 30, 30, {collisionBlocks})
 
 const keys = {
     w: {
@@ -37,6 +40,10 @@ function animate() {
     drawingSurface.clearRect(0, 0, canvasWidth, canvasHeight);
 
     backgroundImage.draw();
+
+    collisionBlocks.forEach(collisionBlock => {
+        collisionBlock.draw()
+    })
 
     //reset velocity x to 0
     square.velocity.x = 0;
