@@ -32,6 +32,14 @@ const player = new Player(100, 250, 20, 20, {collisionBlocks,
             frameBuffer: 6,
             loop: true,
             imageSrc: "./images/player/Punk_run.png"
+        },
+        runLeft: {
+            frameAmountX: 6,
+            frameAmountY: 1,
+            frameBuffer: 6,
+            loop: true,
+            imageSrc: "./images/player/Punk_run.png"
+            // imageSrc: "./images/player/Punk_runLeft.png"
         }
     }
 })
@@ -68,7 +76,7 @@ function animate() {
 
     //check keys pressed
     if(keys.a.pressed) {
-        player.switchSprite("runRight");
+        player.switchSprite("runLeft");
         player.velocity.x = -5;
     }
     else if(keys.d.pressed) {
