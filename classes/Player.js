@@ -21,6 +21,28 @@ class Player extends Sprite {
         this.collisionBlocks = collisionBlocks;
     }
 
+    drawBoundingbox() {
+        //draw bounding box
+        drawingSurface.fillStyle = "rgb(0, 0, 255, 0.5)";
+        drawingSurface.fillRect(this.position.x, this.position.y, this.width, this.height);
+    }
+
+    drawHitbox() {
+        drawingSurface.fillStyle = "rgb(255, 0, 0, 0.5)";
+        drawingSurface.fillRect(this.hitbox.position.x, this.hitbox.position.y, this.hitbox.width, this.hitbox.height)
+    }
+
+    updateHitbox() {
+        this.hitbox = {
+            position: {
+                x: this.position.x,
+                y: this.position.y + 10,
+            },
+            width: this.width - 20,
+            height: this.height - 10
+        }
+    }
+
     applyGravity() {
         this.velocity.y += this.gravity;
         this.position.y += this.velocity.y;
@@ -31,20 +53,24 @@ class Player extends Sprite {
             const block = this.collisionBlocks[i];
 
             //collision
-            if(this.position.y + this.height >= block.position.y
-                && this.position.y <= block.position.y + block.height
-                && this.position.x <= block.position.x + block.width
-                && this.position.x + this.width >= block.position.x) {
+            if(this.hitbox.position.y + this.hitbox.height >= block.position.y
+                && this.hitbox.position.y <= block.position.y + block.height
+                && this.hitbox.position.x <= block.position.x + block.width
+                && this.hitbox.position.x + this.hitbox.width >= block.position.x) {
                 if(this.velocity.x < 0) {
                     drawingSurface.fillStyle = "blue";
                     drawingSurface.fillRect(block.position.x, block.position.y, block.width, block.height)
-                    this.position.x = block.position.x + block.width + 0.1;
+                    const offset = this.hitbox.position.x - this.position.x
+                    this.position.x = block.position.x + block.width - offset + 0.1;
+                    // this.position.x = block.position.x + block.width + 0.1;
                     break;
                 }
                 if(this.velocity.x > 0) {
                     drawingSurface.fillStyle = "blue";
                     drawingSurface.fillRect(block.position.x, block.position.y, block.width, block.height)
-                    this.position.x = block.position.x - this.width - 0.1;
+                    const offset = this.hitbox.position.x - this.position.x + this.hitbox.width;
+                    this.position.x = block.position.x - offset - 0.1;
+                    // this.position.x = block.position.x - this.width - 0.1;
                     break;
                 }
             }
@@ -56,22 +82,26 @@ class Player extends Sprite {
             const block = this.collisionBlocks[i];
             
             //collision
-            if(this.position.y + this.height >= block.position.y
-                && this.position.y <= block.position.y + block.height
-                && this.position.x <= block.position.x + block.width
-                && this.position.x + this.width >= block.position.x) {
+            if(this.hitbox.position.y + this.hitbox.height >= block.position.y
+                && this.hitbox.position.y <= block.position.y + block.height
+                && this.hitbox.position.x <= block.position.x + block.width
+                && this.hitbox.position.x + this.hitbox.width >= block.position.x) {
                     if(this.velocity.y < 0) {
                         this.velocity.y = 0;
                         drawingSurface.fillStyle = "blue";
                         drawingSurface.fillRect(block.position.x, block.position.y, block.width, block.height)
-                        this.position.y = block.position.y + block.height + 0.1;
+                        const offset = this.hitbox.position.y - this.position.y
+                        this.position.y = block.position.y + block.height - offset + 0.1;
+                        // this.position.y = block.position.y + block.height + 0.1;
                         break;
                     }
                     if(this.velocity.y > 0) {
                         this.velocity.y = 0;
                         drawingSurface.fillStyle = "blue";
                         drawingSurface.fillRect(block.position.x, block.position.y, block.width, block.height)
-                        this.position.y = block.position.y - this.height - 0.1;
+                        const offset = this.hitbox.position.y - this.position.y + this.hitbox.height;
+                        this.position.y = block.position.y - offset - 0.1;
+                        // this.position.y = block.position.y - this.height - 0.1;
                     break;
                 }
             }
@@ -86,29 +116,20 @@ class Player extends Sprite {
     
     //update the player
     update() {
-        //draw bounding box
-        drawingSurface.fillStyle = "rgb(0, 0, 255, 0.5)";
-        drawingSurface.fillRect(this.position.x, this.position.y, this.width, this.height);
-
-        //define and draw hitbox
-        this.hitbox = {
-            position: {
-                x: this.position.x,
-                y: this.position.y + 10,
-            },
-            width: this.width - 20,
-            height: this.height - 10
-        }
-        drawingSurface.fillStyle = "rgb(255, 0, 0, 0.5)";
-        drawingSurface.fillRect(this.hitbox.position.x, this.hitbox.position.y, this.hitbox.width, this.hitbox.height)
+        // this.drawBoundingbox()
 
         //apply movement
         this.position.x += this.velocity.x;
         
+        this.updateHitbox()
+        this.drawHitbox();
+        
         this.checkCollisionsX();
         
         this.applyGravity();
+
+        this.updateHitbox();
         
-        this.checkCollisionsY();
+        this.checkCollisionsY(); 
     }
 }
