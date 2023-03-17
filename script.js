@@ -16,7 +16,7 @@ const backgroundImage = new Sprite({
 });
 
 //create a new instance of the player class
-const square = new Player(100, 250, 20, 20, {collisionBlocks,
+const player = new Player(100, 250, 20, 20, {collisionBlocks,
     frameAmountX: 4,
     frameAmountY: 1
 })
@@ -49,15 +49,15 @@ function animate() {
     })
 
     //reset velocity x to 0
-    square.velocity.x = 0;
+    player.velocity.x = 0;
 
     //check keys pressed
-    if(keys.a.pressed) square.velocity.x = -5;
-    else if(keys.d.pressed) square.velocity.x = 5;
+    if(keys.a.pressed) player.velocity.x = -5;
+    else if(keys.d.pressed) player.velocity.x = 5;
 
     //call draw and update function
-    square.draw()
-    square.update();
+    player.draw()
+    player.update();
 }
 
 animate()

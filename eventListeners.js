@@ -1,8 +1,8 @@
 window.addEventListener('keydown', (event) => {
     switch (event.key) {
         case 'w':
-            if(square.velocity.y === 0) {
-                square.velocity.y = -20;
+            if(player.velocity.y === 0) {
+                player.velocity.y = -20;
             }
             break;
         case 'a':
