@@ -87,8 +87,20 @@ class Player extends Sprite {
     //update the player
     update() {
         //draw bounding box
-        drawingSurface.fillStyle = "rgb(0, 0, 255, 0.5";
+        drawingSurface.fillStyle = "rgb(0, 0, 255, 0.5)";
         drawingSurface.fillRect(this.position.x, this.position.y, this.width, this.height);
+
+        //define and draw hitbox
+        this.hitbox = {
+            position: {
+                x: this.position.x,
+                y: this.position.y + 10,
+            },
+            width: this.width - 20,
+            height: this.height - 10
+        }
+        drawingSurface.fillStyle = "rgb(255, 0, 0, 0.5)";
+        drawingSurface.fillRect(this.hitbox.position.x, this.hitbox.position.y, this.hitbox.width, this.hitbox.height)
 
         //apply movement
         this.position.x += this.velocity.x;
