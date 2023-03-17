@@ -6,6 +6,12 @@ const canvasHeight = 576;
 const drawingSurface = canvas.getContext('2d')
 drawingSurface.fillStyle = "red";
 
+//create a new instance of sprite class
+const backgroundImage = new Sprite({
+    position: {x: 0, y: 0},
+    imageSrc: "./images/wall.png"
+});
+
 //create a new instance of the player class
 const square = new Player(100, 100, 100, 100)
 
@@ -29,6 +35,8 @@ function animate() {
     
     // clear background
     drawingSurface.clearRect(0, 0, canvasWidth, canvasHeight);
+
+    backgroundImage.draw();
 
     //reset velocity x to 0
     square.velocity.x = 0;
