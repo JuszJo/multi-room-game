@@ -16,7 +16,10 @@ const backgroundImage = new Sprite({
 });
 
 //create a new instance of the player class
-const square = new Player(100, 250, 30, 30, {collisionBlocks})
+const square = new Player(100, 250, 20, 20, {collisionBlocks,
+    frameAmountX: 4,
+    frameAmountY: 1
+})
 
 const keys = {
     w: {

@@ -6,7 +6,7 @@ class CollisionBlock {
     }
     
     draw() {
-       drawingSurface.fillStyle = "rgb(255, 0, 0, 0.5)"
-       drawingSurface.fillRect(this.position.x, this.position.y, this.width, this.height)
+    //    drawingSurface.fillStyle = "rgb(255, 0, 0, 0.5)"
+    //    drawingSurface.fillRect(this.position.x, this.position.y, this.width, this.height)
     }
  }

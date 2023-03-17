@@ -1,6 +1,7 @@
 //define a player class
-class Player {
-    constructor(x, y, width, height, {collisionBlocks}) {
+class Player extends Sprite {
+    constructor(x, y, width, height, {collisionBlocks, frameAmountX, frameAmountY}) {
+        super({imageSrc: "../images/Punk_idle.png", frameAmountX, frameAmountY})
         this.position = {
             x: x,
             y: y
@@ -11,8 +12,9 @@ class Player {
             y: 0
         }
 
-        this.width = width;
-        this.height = height;
+        //future reference
+        // this.width = width;
+        // this.height = height;
 
         this.gravity = 1;
 
@@ -70,7 +72,6 @@ class Player {
                         drawingSurface.fillStyle = "blue";
                         drawingSurface.fillRect(block.position.x, block.position.y, block.width, block.height)
                         this.position.y = block.position.y - this.height - 0.1;
-                        console.log(block.position.y - this.height, this.position.y)
                     break;
                 }
             }
@@ -78,13 +79,17 @@ class Player {
     }
 
     //draw rectangle function
-    draw() {
-        drawingSurface.fillStyle = "red";
-        drawingSurface.fillRect(this.position.x, this.position.y, this.width, this.height);
-    }
+    // draw() {
+    //     drawingSurface.fillStyle = "red";
+    //     drawingSurface.fillRect(this.position.x, this.position.y, this.width, this.height);
+    // }
     
     //update the player
     update() {
+        //draw bounding box
+        drawingSurface.fillStyle = "rgb(0, 0, 255, 0.5";
+        drawingSurface.fillRect(this.position.x, this.position.y, this.width, this.height);
+
         //apply movement
         this.position.x += this.velocity.x;
         
