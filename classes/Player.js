@@ -15,7 +15,7 @@ class Player extends Sprite {
         // this.height = height;
         this.gravity = 1;
         this.collisionBlocks = collisionBlocks;
-        this.boxes = true;
+        this.boxes = false;
     }
 
     turnOffBoxes() {
