@@ -30,49 +30,16 @@ function animate() {
     // clear background
     drawingSurface.clearRect(0, 0, canvasWidth, canvasHeight);
 
+    //reset velocity x to 0
+    square.velocity.x = 0;
+
+    //check keys pressed
+    if(keys.a.pressed) square.velocity.x = -5;
+    else if(keys.d.pressed) square.velocity.x = 5;
+
     //call draw and update function
     square.draw()
     square.update();
 }
 
 animate()
-
-window.addEventListener('keydown', (event) => {
-    switch (event.key) {
-        case 'w':
-            if(square.velocity.y === 0) {
-                square.velocity.y = -20;
-            }
-            break;
-        case 'a':
-            square.velocity.x = -4;
-            
-            break;
-        case 's':
-            
-            break;
-        case 'd':
-            square.velocity.x = 4;
-            
-            break;
-    
-        default:
-            break;
-    }
-})
-
-window.addEventListener('keyup', (event) => {
-    switch (event.key) {
-        case 'a':
-            square.velocity.x = 0;
-            
-            break;
-        case 'd':
-            square.velocity.x = 0;
-            
-            break;
-    
-        default:
-            break;
-    }
-})
