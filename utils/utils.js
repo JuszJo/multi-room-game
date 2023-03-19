@@ -1,6 +1,6 @@
 function parse2D(array) {
     const rows = [];
-    const length = 64;
+    const length = 128;
  
     for(let i = 0; i < array.length; i += length) {
        rows.push(array.slice(i, i + length))

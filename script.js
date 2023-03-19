@@ -15,6 +15,7 @@ const backgroundImage = new Sprite({
     imageSrc: "./images/multi-room.png"
 });
 
+
 //create a new instance of the player class
 const player = new Player(100, 250, 20, 20, {collisionBlocks,
     frameAmountX: 4,
@@ -44,6 +45,13 @@ const player = new Player(100, 250, 20, 20, {collisionBlocks,
     }
 })
 
+const camera = new Camera(
+    player.position.x, 0,
+    canvasWidth / 1.5, canvasHeight, 
+    canvasWidth, canvasHeight, 
+    player
+    );
+
 const keys = {
     w: {
         pressed: false
@@ -67,10 +75,11 @@ function animate() {
 
     backgroundImage.draw();
 
+    
     //draw collision block
-    // collisionBlocks.forEach(collisionBlock => {
-    //     collisionBlock.draw()
-    // })
+    collisionBlocks.forEach(collisionBlock => {
+        collisionBlock.draw()
+    })
 
     //reset velocity x to 0
     player.velocity.x = 0;
@@ -88,9 +97,27 @@ function animate() {
         player.switchSprite("idle")
     }
 
+    camera.draw()
+    camera.moveScreen();
+    // moveScreen();
+
+    // camera.draw();
+    // if(camera.offset.x + camera.width > canvasWidth) {
+    //     if(keys.d.pressed) {
+    //         player.velocity.x = 0;
+    //         collisionBlocks.forEach(collisionBlock => {
+    //             collisionBlock.position.x -= 4;
+    //         })
+    //         backgroundImage.position.x -= 4;
+    //     }
+    // }
+
     //call draw and update function
     player.draw()
     player.update();
+    // camera.x 
+
+    // drawingSurface.translate(-1, 0);
 }
 
 animate()
