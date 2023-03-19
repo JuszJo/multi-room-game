@@ -12,7 +12,7 @@ const collisionBlocks = createObjectsFrom2D(parsedCollisions)
 //create a new instance of sprite class
 const backgroundImage = new Sprite({
     position: {x: 0, y: 0},
-    imageSrc: "./images/wall.png"
+    imageSrc: "./images/map.png"
 });
 
 //create a new instance of the player class
@@ -67,9 +67,10 @@ function animate() {
 
     backgroundImage.draw();
 
-    collisionBlocks.forEach(collisionBlock => {
-        collisionBlock.draw()
-    })
+    //draw collision block
+    // collisionBlocks.forEach(collisionBlock => {
+    //     collisionBlock.draw()
+    // })
 
     //reset velocity x to 0
     player.velocity.x = 0;

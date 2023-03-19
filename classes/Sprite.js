@@ -46,6 +46,7 @@ class Sprite {
             width: this.width,
             height: this.height
         }
+        
         drawingSurface.drawImage(
             this.image,
             cropbox.position.x,
