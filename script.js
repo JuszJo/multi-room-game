@@ -76,9 +76,9 @@ function animate() {
     backgroundImage.draw();
 
     //draw collision block
-    collisionBlocks.forEach(collisionBlock => {
-        collisionBlock.draw()
-    })
+    // collisionBlocks.forEach(collisionBlock => {
+    //     collisionBlock.draw()
+    // })
 
     //reset velocity x to 0
     player.velocity.x = 0;
