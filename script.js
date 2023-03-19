@@ -75,7 +75,6 @@ function animate() {
 
     backgroundImage.draw();
 
-    
     //draw collision block
     collisionBlocks.forEach(collisionBlock => {
         collisionBlock.draw()
@@ -97,27 +96,14 @@ function animate() {
         player.switchSprite("idle")
     }
 
+    //call camera class
+    camera.update()
     camera.draw()
     camera.moveScreen();
-    // moveScreen();
-
-    // camera.draw();
-    // if(camera.offset.x + camera.width > canvasWidth) {
-    //     if(keys.d.pressed) {
-    //         player.velocity.x = 0;
-    //         collisionBlocks.forEach(collisionBlock => {
-    //             collisionBlock.position.x -= 4;
-    //         })
-    //         backgroundImage.position.x -= 4;
-    //     }
-    // }
 
     //call draw and update function
     player.draw()
     player.update();
-    // camera.x 
-
-    // drawingSurface.translate(-1, 0);
 }
 
 animate()

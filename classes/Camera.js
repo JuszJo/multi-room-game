@@ -7,6 +7,15 @@ class Camera {
         this.offset = {
             x: player.position.x - (this.width / 2) + (player.hitbox.width / 2)
         }
+        this.turnedOn = false;
+    }
+    
+    turnOn() {
+        this.turnedOn = true;
+    }
+
+    turnOff() {
+        this.turnedOn = false;
     }
 
     moveScreen() {
@@ -30,8 +39,13 @@ class Camera {
         }
     }
 
-    draw() {
+    update() {
         this.offset.x = player.position.x - (this.width / 2) + (player.hitbox.width / 2);
-        drawingSurface.strokeRect(this.offset.x, this.y, this.width, this.height)
+    }
+
+    draw() {
+        if(this.turnedOn) {
+            drawingSurface.strokeRect(this.offset.x, this.y, this.width, this.height)
+        }
     }
 }
