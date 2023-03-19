@@ -12,7 +12,7 @@ const collisionBlocks = createObjectsFrom2D(parsedCollisions)
 //create a new instance of sprite class
 const backgroundImage = new Sprite({
     position: {x: 0, y: 0},
-    imageSrc: "./images/map.png"
+    imageSrc: "./images/multi-room.png"
 });
 
 //create a new instance of the player class
