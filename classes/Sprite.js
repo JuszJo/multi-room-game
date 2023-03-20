@@ -15,7 +15,8 @@ class Sprite {
         this.currentFrame = 0;
         this.elapsedFrames = 0;
         this.frameBuffer = 6;
-        this.animations = animations
+        this.animations = animations;
+        this.front = true;
 
         if(this.animations) {
             for (let key in this.animations) {
@@ -31,8 +32,14 @@ class Sprite {
         ++this.elapsedFrames;
 
         if(this.elapsedFrames % this.frameBuffer == 0) {
-            if(this.currentFrame < this.frameAmountX - 1) ++this.currentFrame;
-            else this.currentFrame = 0;
+            if(this.front) {
+                if(this.currentFrame < this.frameAmountX - 1) ++this.currentFrame;
+                else this.currentFrame = 0;
+            }
+            else {
+                if(this.currentFrame > 0) --this.currentFrame;
+                else this.currentFrame = this.animations.runLeft.animationStart;
+            }
         }
     }
 

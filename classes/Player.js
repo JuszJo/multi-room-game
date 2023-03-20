@@ -123,7 +123,7 @@ class Player extends Sprite {
 
     switchSprite(name) {
         if(this.image == this.animations[name].image) return
-        this.currentFrame = 0;
+        this.currentFrame = this.animations[name].animationStart;
         this.image = this.animations[name].image;
         this.frameAmountX = this.animations[name].frameAmountX;
         this.frameBuffer = this.animations[name].frameBuffer;

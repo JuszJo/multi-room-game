@@ -25,22 +25,25 @@ const player = new Player(100, 250, 20, 20, {collisionBlocks,
             frameAmountX: 4,
             frameAmountY: 1,
             loop: true,
-            imageSrc: "./images/player/Punk_idle.png"
+            imageSrc: "./images/player/Punk_idle.png",
+            animationStart: 0,
         },
         runRight: {
             frameAmountX: 6,
             frameAmountY: 1,
             frameBuffer: 6,
             loop: true,
-            imageSrc: "./images/player/Punk_run.png"
+            imageSrc: "./images/player/Punk_run.png",
+            animationStart: 0,
         },
         runLeft: {
             frameAmountX: 6,
             frameAmountY: 1,
             frameBuffer: 6,
             loop: true,
-            imageSrc: "./images/player/Punk_run.png"
-            // imageSrc: "./images/player/Punk_runLeft.png"
+            // imageSrc: "./images/player/Punk_run.png",
+            imageSrc: "./images/player/Punk_runLeft.png",
+            animationStart: 5
         }
     }
 })
@@ -86,11 +89,15 @@ function animate() {
     //check keys pressed
     if(keys.a.pressed) {
         player.switchSprite("runLeft");
+        player.front = false
         player.velocity.x = -5;
+        // console.log(player.front)
     }
     else if(keys.d.pressed) {
         player.switchSprite("runRight");
-        player.velocity.x = 5
+        player.front = true;
+        player.velocity.x = 5;
+        // console.log(player.front)
     }
     else {
         player.switchSprite("idle")
