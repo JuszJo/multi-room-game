@@ -12,7 +12,7 @@ function createObjectsFrom2D(array) {
     const objects = [];
     array.forEach((value, y) => {
         value.forEach((value, x) => {
-            if(value == 441) {
+            if(value == 766) {
                 objects.push(new CollisionBlock({
                     position: {
                         x: x * 16,
