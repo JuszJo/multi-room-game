@@ -42,7 +42,7 @@ const player = new Player(100, 250, 20, 20, {collisionBlocks,
             frameBuffer: 6,
             loop: true,
             // imageSrc: "./images/player/Punk_run.png",
-            imageSrc: "./images/player/Punk_runLeft.png",
+            imageSrc: "./images/player/Punk_runLeftIMP.png",
             animationStart: 5
         }
     }
