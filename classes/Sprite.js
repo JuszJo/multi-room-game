@@ -11,7 +11,7 @@ class Sprite {
         }
         this.image.src = imageSrc;
         this.frameAmountX = frameAmountX;
-        this.frameAmountY = frameAmountY
+        this.frameAmountY = frameAmountY;
         this.currentFrame = 0;
         this.elapsedFrames = 0;
         this.frameBuffer = 6;

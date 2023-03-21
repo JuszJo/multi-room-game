@@ -24,6 +24,7 @@ const player = new Player(100, 250, 20, 20, {collisionBlocks,
         idle: {
             frameAmountX: 4,
             frameAmountY: 1,
+            frameBuffer: 10,
             loop: true,
             imageSrc: "./images/player/Punk_idle.png",
             animationStart: 0,
@@ -88,7 +89,7 @@ function animate() {
     //check keys pressed
     if(keys.a.pressed) {
         player.switchSprite("runLeft");
-        player.front = false
+        player.front = false;
         player.velocity.x = -5;
         // console.log(player.front)
     }
@@ -99,7 +100,8 @@ function animate() {
         // console.log(player.front)
     }
     else {
-        player.switchSprite("idle")
+        player.front = true;
+        player.switchSprite("idle");
     }
 
     //call camera class
