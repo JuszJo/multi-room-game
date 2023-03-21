@@ -25,7 +25,7 @@ const player = new Player(100, 250, 20, 20, {collisionBlocks,
             frameAmountX: 4,
             frameAmountY: 1,
             loop: true,
-            imageSrc: "../images/player/Punk_idle.png",
+            imageSrc: "./images/player/Punk_idle.png",
             animationStart: 0,
         },
         runRight: {
@@ -33,7 +33,7 @@ const player = new Player(100, 250, 20, 20, {collisionBlocks,
             frameAmountY: 1,
             frameBuffer: 6,
             loop: true,
-            imageSrc: "../images/player/Punk_run.png",
+            imageSrc: "./images/player/Punk_run.png",
             animationStart: 0,
         },
         runLeft: {
@@ -41,7 +41,7 @@ const player = new Player(100, 250, 20, 20, {collisionBlocks,
             frameAmountY: 1,
             frameBuffer: 6,
             loop: true,
-            imageSrc: "../images/player/Punk_runLeftIMP.png",
+            imageSrc: "./images/player/Punk_runLeftIMP.png",
             animationStart: 5
         }
     }
