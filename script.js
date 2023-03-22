@@ -70,6 +70,10 @@ const keys = {
     }
 }
 
+function drawCollisionBlock() {
+    collisionBlocks.forEach(collisionBlock => collisionBlock.draw());
+}
+
 function animate() {
     window.requestAnimationFrame(animate)
     
@@ -78,10 +82,7 @@ function animate() {
 
     backgroundImage.draw();
 
-    //draw collision block
-    // collisionBlocks.forEach(collisionBlock => {
-    //     collisionBlock.draw()
-    // })
+    // drawCollisionBlock();
 
     //reset velocity x to 0
     player.velocity.x = 0;
