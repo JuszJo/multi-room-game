@@ -109,8 +109,8 @@ function animate() {
     camera.draw()
 
     //call draw and update function
-    player.draw()
     player.update();
+    player.draw()
 }
 
 animate()
