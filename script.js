@@ -50,8 +50,7 @@ const player = new Player(100, 250, 20, 20, {collisionBlocks,
 
 const camera = new Camera(
     player.position.x, 0,
-    canvasWidth / 1.5, canvasHeight, 
-    canvasWidth, canvasHeight, 
+    canvasWidth / 1.5, canvasHeight,  
     player
     );
 
@@ -108,7 +107,6 @@ function animate() {
     //call camera class
     camera.update()
     camera.draw()
-    camera.moveScreen();
 
     //call draw and update function
     player.draw()

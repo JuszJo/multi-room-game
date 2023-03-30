@@ -129,11 +129,11 @@ class Player extends Sprite {
         this.frameBuffer = this.animations[name].frameBuffer;
     }
 
-    //draw rectangle function
-    // draw() {
-    //     drawingSurface.fillStyle = "red";
-    //     drawingSurface.fillRect(this.position.x, this.position.y, this.width, this.height);
-    // }
+    /* draw rectangle function
+    draw() {
+        drawingSurface.fillStyle = "red";
+        drawingSurface.fillRect(this.position.x, this.position.y, this.width, this.height);
+    } */
     
     //update the player
     update() {

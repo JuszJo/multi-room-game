@@ -1,5 +1,5 @@
 class Camera {
-    constructor(x, y, width, height, canvasWidth, canvasHeight, player) {
+    constructor(x, y, width, height, player) {
         this.x = x;
         this.y = y;
         this.width = width;
@@ -47,5 +47,6 @@ class Camera {
         if(this.turnedOn) {
             drawingSurface.strokeRect(this.offset.x, this.y, this.width, this.height)
         }
+        this.moveScreen();
     }
 }
