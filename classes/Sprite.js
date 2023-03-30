@@ -25,7 +25,6 @@ class Sprite {
                 this.animations[key].image = image;
             }
         }
-
     }
 
     updateFrames() {

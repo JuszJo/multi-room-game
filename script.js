@@ -28,7 +28,6 @@ const player = new Player(100, 250, 20, 20, {collisionBlocks,
             loop: true,
             imageSrc: "./images/player/Punk_idle.png",
             animationStart: 0,
-            front: true
         },
         runRight: {
             frameAmountX: 6,
@@ -37,7 +36,6 @@ const player = new Player(100, 250, 20, 20, {collisionBlocks,
             loop: true,
             imageSrc: "./images/player/Punk_run.png",
             animationStart: 0,
-            front: true
         },
         runLeft: {
             frameAmountX: 6,
@@ -46,7 +44,6 @@ const player = new Player(100, 250, 20, 20, {collisionBlocks,
             loop: true,
             imageSrc: "./images/player/Punk_runLeftIMP.png",
             animationStart: 5,
-            front: false
         }
     }
 })
