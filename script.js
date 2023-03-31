@@ -86,6 +86,8 @@ function animate() {
     //reset velocity x to 0
     player.velocity.x = 0;
 
+    /* will add y velocity here */
+
     //check keys pressed
     if(keys.a.pressed) {
         player.switchSprite("runLeft");
