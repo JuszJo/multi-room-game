@@ -143,6 +143,7 @@ class Player extends Sprite {
         this.position.x += this.velocity.x;
         
         this.updateHitbox()
+        
         this.drawHitbox();
         
         this.checkCollisionsX();
